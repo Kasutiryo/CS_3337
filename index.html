@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script> 
+    <title>ATS</title>
+   
+</head>
+<body>
+    <h1>Login to Account</h1>
+    <div class="box"> 
+        <div class="col">
+            Username: <input type="text">
+            Password: <input type="text">  
+        </div>   
+        <div class="row">
+            <button onclick="studentLink()">Student</button>
+            <script>
+                function studentLink() {
+                    window.location='student.html';
+                }
+            </script>
+            <button onclick="tutorLink()">Tutor</button>
+            <script>
+                function tutorLink() {
+                    window.location='tutor.html';
+                }
+            </script>
+        </div>
+        <div>
+            <a href="forgotPass.html">Forgot password?</a>
+        </div>
+    </div>
+
+</body>
+</html>

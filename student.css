@@ -1,0 +1,72 @@
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    padding: 1em;
+}
+
+.nav {
+    font-size: 25px;
+    padding: 2px;
+    border-bottom: 2px solid grey;
+    border-top: 2px solid grey;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+#map {
+    height: 700px;
+    margin: 3em;
+    width: 40%;
+    border: 3px solid grey;
+}
+
+.tutorDescription {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid grey;
+}
+
+.tutorDescriptionTitle {
+    border-bottom: 2px solid grey;
+}
+
+.tutorDescriptionContent {
+    margin: auto;
+}
+
+button {
+    margin-top: 2em;
+    display: flex;
+    align-content: center;
+}
+
+.footer {
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid grey;
+    justify-content: center;
+    margin: 2em;
+}
+
+.footerNav {
+    justify-content: flex-end;
+    padding-left: 10em;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+html {
+    font-size: 1.8em;
+}
