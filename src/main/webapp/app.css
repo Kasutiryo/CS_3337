@@ -9,18 +9,18 @@ a {
 .content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: 30em;
 }
 
 .student_information, form, .student_schedule_column, .tutor_directory_table {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    max-width: 75%;
 }
 
 .directory_filter_options {
-    width: 25%;
+    max-width: 25%;
 }
 
 .student_schedule_table, .tutor_directory_table {
@@ -31,14 +31,17 @@ a {
     .header {
         background-color: antiquewhite;
     }
+
 footer {
     margin-top: 2em;
     text-align: center;
 }
+
 button {
     width: 8em;
     margin-top: 2em;
 }
+
 html {
     font-size: 62.5%;
     font-family: Avenir Next,Helvetica,Arial,Sans-Serif;
