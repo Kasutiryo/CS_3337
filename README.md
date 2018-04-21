@@ -5,12 +5,15 @@ Gretty.
 
 ## Runtime dependencies
 
-You will need Java, Node.js, Gradle to run this project (or simply Docker).
+You will need Java & Gradle to run this project. It might be possible to test the site without installing Gradle. However if you
+do, follow these steps: https://gradle.org/install/ 
 
 ## Get Started
 
-You can run `./script/start.sh` to start application and go to http://localhost:8080/hello
-to see HelloServlet working.
+Download and unzip the entire repository. Open your terminal whether it be Git, CMD, Powershell, etc, and navigate to 
+the same directory where you unziped the repository. Type in `./gradlew build` to get unpack any dependencies.
+
+You can run `./script/start.sh` or `/gradlew appRun` to start application and go to `http://localhost:8080/{HTML_PATH}`
 
 You can start adding more Java Servlets under `src/main/java` folder to continue
 hacking!
@@ -23,19 +26,10 @@ and **back end development**.
 ### File Structure
 
 ```
-client/                         -> Front end resources
-	src/                        -> Source codes
-		app.js                  -> JavaScript entry/main file
-	test/                       -> Test folder
-	.babelrc                    -> JavaScript transpiling configuration (through BabelJS)
-	package.json                -> Front end dependencies in npm packages (if any)
-	webpack.config              -> Bundler configuration
 src/main/
 	/java/                  -> Your java classes
-		edu/csula/web/HelloServlet.java -> HelloServlet for example
 	/webapp/                -> Your front end resources
 		js/                 -> JavaScript assets
-			app.bundle.js   -> Bundled JavaScript code from `client/src`
 build.gradle                    -> necessary gradle definition
 build/                          -> built files
 	classes                     -> compiled java classes
