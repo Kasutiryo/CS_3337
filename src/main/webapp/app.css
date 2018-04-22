@@ -1,4 +1,8 @@
-.nav {
+.title {
+    text-align: center;
+ }
+ 
+ .nav {
     margin-bottom: 2em;
 }
 
@@ -13,17 +17,26 @@ a {
     height: 30em;
 }
 
-.student_information, form, .student_schedule_column, .tutor_directory_table {
+.student_information, form, .tutor_schedule_column, .student_schedule_column, .tutor_directory_table, .student_input_schedule {
     display: flex;
     flex-direction: column;
-    max-width: 75%;
+    max-width: 100%;
+}
+
+.box {
+    border: 2px solid grey;
+    padding: 1.2em;
+    display: flex;
+    max-width: 25%;
+    margin: auto;
+    align-content: center;
 }
 
 .directory_filter_options {
     max-width: 25%;
 }
 
-.student_schedule_table, .tutor_directory_table {
+.student_schedule_table, .tutor_directory_table, .student_input_schedule {
     border: 2px solid grey;
     margin: 1em;
 }
@@ -37,9 +50,17 @@ footer {
     text-align: center;
 }
 
-button {
-    width: 8em;
+.input {
+    height: 2em;
+    font-size: 14px;
+}
+
+.login_button {
     margin-top: 2em;
+    font-size: 1.8rem;
+    height: 2em;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 html {
