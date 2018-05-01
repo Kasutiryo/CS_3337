@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.csula.models.UsersDAO;
+
 
 @WebServlet("/login")
 public class AuthenticationServlet extends HttpServlet {
@@ -30,22 +32,27 @@ public class AuthenticationServlet extends HttpServlet {
 	public void doPost( HttpServletRequest request, HttpServletResponse response) 
 		throws ServletException, IOException {
 		// TODO: handle login
-		// UsersDAOImpl dao = new UsersDAOImpl(request.getSession());
+		
+		UsersDAO dao = new UsersDAO(request.getSession());
 
 		String username = request.getParameter("username"),
-            password = request.getParameter("password");
-            
-            request.getRequestDispatcher("/WEB-INF/student-ui.jsp")
-                .forward(request, response);
+			password = request.getParameter("password");
 
-		// if(dao.authenticate(username, password)) {
-		// 	request.getRequestDispatcher("/WEB-INF/admin-events.jsp")
-		// 		.forward(request, response);
-		// } else {
-		// 	request.getRequestDispatcher("/WEB-INF/login-error.jsp")
-		// 		.forward(request, response);
-		// }
-
+		dao.authenticate(username, password);
+		
+		if (dao.authenticate(username, password)) {
+			switch (dao.getAuthenticatedUser().get().getUsername()) {
+				case "student": 
+					request.getRequestDispatcher("/WEB-INF/student-ui.jsp")
+						.forward(request, response);
+				case "tutor":
+					request.getRequestDispatcher("/WEB-INF/tutor-ui.jsp")
+						.forward(request, response);
+			}
+		} else {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);;
+		}
+		
 
 	}
 

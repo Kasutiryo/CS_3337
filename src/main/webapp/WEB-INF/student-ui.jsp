@@ -11,18 +11,15 @@
         <a href='<c:url value="/student"/>'>Home</a>
         | <a href='<c:url value="/student/directory"/>'>Directory</a>
         | <a href='<c:url value="/student/forum"/>'>Forum</a>
+        | <a href='<c:url value="/logout"/>'>Logout</a>
     </nav>
     <main>
         <div class='content'>
             <div class='student_information'>
-                <form>
                     <label>Student: </label>
-                    <label>{STUDENT_NAME}</label> <!-- GRAB THIS FROM CSULA DATABASE -->
-                </form>
-                <form>
+                    <label>${student.getFullName()}</label>
                     <label>Major: </label>
-                     <label>{STUDENT_MAJOR}</label> <!-- GRAB THIS FROM CSULA DATABASE -->
-                </form>
+                    <label>${student.getMajor()}</label> 
             </div>
             <div class='student_schedule_column'>
                 <label>My Class Schedule: </label>
@@ -30,64 +27,53 @@
                     <tr class='header'>
                         <th>Subject</th>
                         <th>Course Number</th>
+                        <th>Course Name</th>
                         <th>Time</th>
                     </tr>
-                    <tr>
-                        <td>CS</td> <!-- GRAB THIS FROM CSULA DATABASE -->
-                        <td>3337</td> <!-- GRAB THIS FROM CSULA DATABASE -->
-                        <td>11:30 AM - 3:45 PM</td> <!-- GRAB THIS FROM CSULA DATABASE -->
-                    </tr>
-                    <tr>
-                        <td>CS</td> <!-- GRAB THIS FROM CSULA DATABASE -->
-                        <td>3220</td> <!-- GRAB THIS FROM CSULA DATABASE -->
-                        <td>4:00 PM - 8:05 PM</td> <!-- GRAB THIS FROM CSULA DATABASE -->
-                    </tr>
-                </table>
-                <label>Enter your schedule here in military time (i.e "1100-1300,1530-1745"): </label>
-                <table class='student_input_schedule'>
-                    <tr class='header'>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Action</th>
-                    </tr>
-                    <tr>
-                        <form action='<c:url value="/student/schedule"/>' method='POST'>
-                            <td><input type='text' name='monday'></td>
-                            <td><input type='text' name='tuesday'></td>
-                            <td><input type='text' name='wednesday'></td>
-                            <td><input type='text' name='thursday'></td>
-                            <td><input type='text' name='friday'></td>
-                            <td><input type='submit' value='Enter'></td>
-                        </form>
-                    </tr>
+                    <c:forEach items="${student.getClasses()}" var="class">
+                        <tr>
+                            <td>${class.getSubject()}</td>
+                            <td>${class.getClass_number()}</td>
+                            <td>${class.getName()}</td>
+                            <td>
+                                <c:forEach items="${class.getSchedule()}" var="day">
+                                    ${day.getDay()}
+                                    <c:forEach items="${day.getIntervals()}" var="time">
+                                        - ${time.toString()}  
+                                    </c:forEach>
+                                </c:forEach>
+                            </td>                            
+                        </tr>
+                    </c:forEach>
                 </table>
                 <label>Available Sessions: </label>
                 <table class='student_schedule_table'>
-                        <tr class='header'>
-                            <th>Subject</th>
-                            <th>Course Number</th>
-                            <th>Tutor</th>
-                            <th>Time</th>
-                            <th>Action</th>
-                        </tr>
+                    <tr class='header'>
+                        <th>Subject</th>
+                        <th>Course Number</th>
+                        <th>Tutor</th>
+                        <th>Days Available</th>
+                        <th>Action</th>
+                    </tr>
+                    
+                        <c:forEach items="${student.getClasses()}" var="class">
                         <tr>
-                             <td>CS</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td>3337</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td>John Doe</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td>{Mon, Wed, Fri} 1:00 PM - 3:00 PM</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td><button>Schedule Now!</button></td> <!-- CREATE AND CONFIRM SESSION THROUGH COMMUNICATION AND SCHEDULING MODULES -->
+                            <th>${class.getSubject()}</th>
+                            <th>${class.getClass_number()}</th>
+                            <th>${tutor.getFullName()}</th>
+                            <th>
+                                ${scheduler.find_avaiability(student, tutor)}
+                            </th>
+                            <th>
+                                <form>
+                                 <input type='Submit' value="Schedule Now!">
+                                </form>                            
+                            </th>
                         </tr>
-                        <tr>
-                            <td>CS</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td>3220</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td>Julia Smith</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td>{Tues, Thur} 8:00 AM - 10:00 AM</td> <!-- COMPUTE THROUGH SCHEDULING MODULE -->
-                            <td><button>Schedule Now!</button></td>
-                        </tr>
-                    </table>
+                        </c:forEach>
+                    
+                </table>
+                <input type='submit' value='Find tutors now!'>
             </div>
         </div>
     </main>

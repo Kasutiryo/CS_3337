@@ -18,15 +18,15 @@
             <div class='student_information'>
                 <form>
                     <label>Tutor: </label>
-                    <label>{TUTOR_NAME}</label>
+                    <label>${tutor.getFullName()}</label>
                     <!-- GRAB THIS FROM CSULA DATABASE -->
                     <label>Fields of expertise: </label>
-                    <label>{TUTOR_FIELD_OF_EXPERTISE}</label>
+                    <label>${tutor.getMajor()}</label>
                     <!-- GRAB THIS FROM CSULA DATABASE -->
                 </form>
             </div>
             <div class='tutor_schedule_column'>
-                <label>Enter your schedule here in military time (i.e "1100-1300,1530-1745"): </label>
+                <label>Enter your new schedule here in military time (i.e "1100-1300,1530-1745"): </label>
                 <table class='student_input_schedule'>
                     <tr class='header'>
                         <th>Monday</th>

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import edu.csula.models.UsersDAO;
+
 @WebServlet("/tutor") 
 public class TutorServlet extends HttpServlet {
 
@@ -18,6 +20,11 @@ public class TutorServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
+        UsersDAO user = new UsersDAO(request.getSession());
+
+        if (!user.getAuthenticatedUser().isPresent()) {
+            response.sendRedirect(request.getContextPath() + "/login");
+        } 
         request.getRequestDispatcher("/WEB-INF/tutor-ui.jsp")
             .forward(request, response);
      }
@@ -26,6 +33,8 @@ public class TutorServlet extends HttpServlet {
      public void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
+        request.getRequestDispatcher("/WEB-INF/tutor_ui.jsp")
+            .forward(request, response);
         
      }
 }
