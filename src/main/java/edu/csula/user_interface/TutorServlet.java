@@ -33,7 +33,7 @@ public class TutorServlet extends HttpServlet {
      public void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
-        request.getRequestDispatcher("/WEB-INF/tutor_ui.jsp")
+        request.getRequestDispatcher("/WEB-INF/tutor-ui.jsp")
             .forward(request, response);
         
      }

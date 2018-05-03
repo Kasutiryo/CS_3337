@@ -37,23 +37,21 @@ public class AuthenticationServlet extends HttpServlet {
 
 		String username = request.getParameter("username"),
 			password = request.getParameter("password");
-
-		dao.authenticate(username, password);
 		
 		if (dao.authenticate(username, password)) {
-			switch (dao.getAuthenticatedUser().get().getUsername()) {
-				case "student": 
-					request.getRequestDispatcher("/WEB-INF/student-ui.jsp")
-						.forward(request, response);
+			switch (username) {
 				case "tutor":
 					request.getRequestDispatcher("/WEB-INF/tutor-ui.jsp")
-						.forward(request, response);
+						.forward(request, response); break;
+				case "student": 
+					request.getRequestDispatcher("/WEB-INF/student-ui.jsp")
+						.forward(request, response); break;
+				default: 
+					response.sendRedirect(request.getContextPath() + "/login");
 			}
 		} else {
 			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);;
 		}
-		
-
 	}
 
     @Override

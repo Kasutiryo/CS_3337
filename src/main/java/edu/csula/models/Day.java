@@ -10,6 +10,7 @@ public class Day {
     public static final String WEDNESDAY = "WEDNESDAY";
     public static final String THURSDAY = "THURSDAY";
     public static final String FRIDAY = "FRIDAY";
+    public static final String SATURDAY = "SATURDAY";
 
     public static final LocalTime start_of_work_day = LocalTime.of(8, 00);
     public static final LocalTime end_of_work_day = LocalTime.of(17, 30);
@@ -68,6 +69,15 @@ public class Day {
             //              b_start           b_end                             b_start                                            b_end
             boolean a_is_busy = a_start.isBefore(b_start) && a_end.isAfter(b_end);
             boolean b_is_busy = b_start.isBefore(a_start) && b_end.isAfter(a_end);
+
+            LocalTime[] time = {a_start, a_end, b_start, b_end};
+
+            //If there the free time avaiable is before 8 AM or 5:30 PM, the tutor is not working
+            for (LocalTime item: time) {
+                if (!start_of_work_day.isBefore(item) && !end_of_work_day.isAfter(item)) {
+                    return false;
+                }
+            }
             //If both intervals overlap, then one party cannot meet
             if(a_is_busy || b_is_busy) {
                 return false;

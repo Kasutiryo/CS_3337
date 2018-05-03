@@ -11,6 +11,14 @@ public class Scheduler {
      */
     public String find_avaiability(User student, User tutor) {
         
+        for (String s: student.getArraySubjects()) {
+            for(String t: tutor.getArraySubjects()) {
+                if (s.equals(t)) {
+                    
+                }
+            }
+        }
+
         Day[] student_schedule = student.getSchedule();
         Day[] tutor_schedule = tutor.getSchedule();
 

@@ -12,18 +12,20 @@ public class User {
 	private final String major;
 	private Class[] list_of_classes;
 	private Day[] schedule;
+	private String[] subjects;
 
 	public User(int id, String username, String password, String first_name, 
-		String last_name, String major, Class[] list_of_classes) {
+		String last_name, String major, String[] subjects, Class[] list_of_classes) {
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.major = major;
+		this.subjects = subjects;
 		this.list_of_classes = list_of_classes;
 		this.schedule = composeList(list_of_classes);
-	}
+}
 
 	private Day[] composeList(Class[] list) {
 
@@ -44,9 +46,10 @@ public class User {
 			for (int j = 0; j < class_days.length; j++) {
 
 				int input_day = determineDay(class_days[j].getDay());
+				if(input_day == -1) {continue;}
 
 				ArrayList<LocalTime> time = toReturn[input_day].getIntervals();
-				for(LocalTime item: class_days[i].getIntervals()) {
+				for(LocalTime item: class_days[j].getIntervals()) {
 					time.add(item);
 				}
 
@@ -114,6 +117,19 @@ public class User {
 
 	public Day[] getSchedule() {
 		return schedule;
+	}
+
+	public String getStringSubjects() {
+		String toReturn = "";
+		for(String item: subjects) {
+			toReturn += item;
+		}
+
+		return toReturn;
+	}
+
+	public String[] getArraySubjects() {
+		return subjects;
 	}
 
 	@Override

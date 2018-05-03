@@ -10,8 +10,8 @@
     </head>
     <nav class='nav'>
         <a href='<c:url value="/tutor"/>'>Home</a>
-        | <a href='<c:url value="/tutor/directory"/>'>Directory</a>
         | <a href='<c:url value="/tutor/forum"/>'>Forum</a>
+        | <a href='<c:url value="/login"/>'>Logout</a>
     </nav>
     <main>
         <div class='content'>
@@ -19,10 +19,8 @@
                 <form>
                     <label>Tutor: </label>
                     <label>${tutor.getFullName()}</label>
-                    <!-- GRAB THIS FROM CSULA DATABASE -->
                     <label>Fields of expertise: </label>
                     <label>${tutor.getMajor()}</label>
-                    <!-- GRAB THIS FROM CSULA DATABASE -->
                 </form>
             </div>
             <div class='tutor_schedule_column'>

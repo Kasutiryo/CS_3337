@@ -37,7 +37,7 @@ public class StudentServlet extends HttpServlet {
     }
 
     @Override 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {;
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getRequestDispatcher("/WEB-INF/student-ui.jsp")
             .forward(request, response);

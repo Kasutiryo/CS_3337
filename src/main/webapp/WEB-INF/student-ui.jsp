@@ -11,7 +11,7 @@
         <a href='<c:url value="/student"/>'>Home</a>
         | <a href='<c:url value="/student/directory"/>'>Directory</a>
         | <a href='<c:url value="/student/forum"/>'>Forum</a>
-        | <a href='<c:url value="/logout"/>'>Logout</a>
+        | <a href='<c:url value="/login"/>'>Logout</a>
     </nav>
     <main>
         <div class='content'>
@@ -49,31 +49,26 @@
                 <label>Available Sessions: </label>
                 <table class='student_schedule_table'>
                     <tr class='header'>
-                        <th>Subject</th>
-                        <th>Course Number</th>
+                        <th>Subjects</th>
                         <th>Tutor</th>
                         <th>Days Available</th>
                         <th>Action</th>
                     </tr>
-                    
-                        <c:forEach items="${student.getClasses()}" var="class">
-                        <tr>
-                            <th>${class.getSubject()}</th>
-                            <th>${class.getClass_number()}</th>
-                            <th>${tutor.getFullName()}</th>
-                            <th>
-                                ${scheduler.find_avaiability(student, tutor)}
-                            </th>
-                            <th>
-                                <form>
-                                 <input type='Submit' value="Schedule Now!">
-                                </form>                            
-                            </th>
-                        </tr>
+                        <c:forEach items="${tutors}" var="tutor">
+                            <tr>
+                                <td>${tutor.getStringSubjects()}</td>
+                                <td>${tutor.getFullName()}</td>
+                                <td>
+                                    ${scheduler.find_avaiability(student, tutor)}
+                                </td>
+                                <td>
+                                    <form action='<c:url value="/confirm-day?tutor=${tutor.getId()}"/>' method="POST">
+                                        <input type='Submit' value="Schedule Now!">
+                                    </form>                            
+                                </td>
+                            </tr>
                         </c:forEach>
-                    
                 </table>
-                <input type='submit' value='Find tutors now!'>
             </div>
         </div>
     </main>
