@@ -1,9 +1,6 @@
 package edu.csula.admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.security.DomainLoadStoreParameter;
-import java.util.Collection;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,14 +21,12 @@ public class AuthenticationServlet extends HttpServlet {
 
 		doDelete(request, response);
 		
-		request.getRequestDispatcher("/WEB-INF/login.jsp")
-			.forward(request, response);
+		//response.sendRedirect(request.getContextPath() + "/login");
 	}
 
 	@Override
 	public void doPost( HttpServletRequest request, HttpServletResponse response) 
 		throws ServletException, IOException {
-		// TODO: handle login
 		
 		UsersDAO dao = new UsersDAO(request.getSession());
 
@@ -57,10 +52,6 @@ public class AuthenticationServlet extends HttpServlet {
     @Override
 	public void doDelete( HttpServletRequest request, HttpServletResponse response) 
 		throws ServletException, IOException {
-		// TODO: handle logout
-		// UsersDAOImpl dao = new UsersDAOImpl(request.getSession());
-
-        // dao.logout();
         
         request.getSession().invalidate();
 

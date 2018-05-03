@@ -38,7 +38,7 @@
                             <td>
                                 <c:forEach items="${class.getSchedule()}" var="day">
                                     ${day.getDay()}
-                                    <c:forEach items="${day.getIntervals()}" var="time">
+                                    <c:forEach items='${day.getIntervals()}' var="time">
                                         - ${time.toString()}  
                                     </c:forEach>
                                 </c:forEach>

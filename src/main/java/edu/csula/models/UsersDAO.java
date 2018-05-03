@@ -2,7 +2,6 @@ package edu.csula.models;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -56,7 +55,7 @@ public class UsersDAO {
 				new Day[]{
 					new Day(Day.SATURDAY, class_3)
 				}),
-			new Class("CS", 2008, "Software Engineering", 
+			new Class("CS", 33337, "Software Engineering", 
 				new Day[]{
 					new Day(Day.SATURDAY, class_4)
 				})};
@@ -118,8 +117,6 @@ public class UsersDAO {
 
 
 	public boolean authenticate(String username, String password) {
-		// TODO: check if username/password combination is valid and store the
-		//       username/password into the session
 
 		if(admin.getUsername().equals(username) && admin.getPassword().equals(password)) {
 			context.setAttribute(CONTEXT_NAME, admin);
@@ -139,7 +136,6 @@ public class UsersDAO {
 	}
 
 	public Optional<User> getAuthenticatedUser() {
-		// TODO: return the authenticated user if there is any
 		if (context.getAttribute(CONTEXT_NAME) == null) {
 			return Optional.empty();
 		} else if (context.getAttribute(CONTEXT_NAME) == student) {

@@ -5,7 +5,7 @@ public class Class {
     private String subject; 
     private String name; 
     private int class_number;
-    private Day[] class_schedule;
+    Day[] class_schedule;
 
     public Class(String subject, int class_number, String name,
          Day[] class_schedule) {

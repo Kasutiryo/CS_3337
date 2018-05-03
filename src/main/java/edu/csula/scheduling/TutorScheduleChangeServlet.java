@@ -1,8 +1,6 @@
 package edu.csula.scheduling;
 
 import java.io.IOException;
-import java.util.Collection;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
