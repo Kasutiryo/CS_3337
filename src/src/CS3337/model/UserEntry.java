@@ -12,14 +12,10 @@ public class UserEntry {
     String class4;
     String class5;
     String class6;
-    
-    String subjects;
-    
-    String tutorschedule;
 
     public UserEntry( Integer id, String name, String email, String class1, 
     		String class2, String class3, String class4, String class5, 
-    		String class6, String subjects, String tutorschedule)
+    		String class6)
     {
         this.id = id;
         this.name = name;
@@ -30,8 +26,6 @@ public class UserEntry {
         this.class4 = class4;
         this.class5 = class5;
         this.class6 = class6;
-        this.subjects = subjects;
-        this.tutorschedule = tutorschedule;
     }
 
     public Integer getId()
@@ -122,25 +116,5 @@ public class UserEntry {
     public void setClass6( String class6 )
     {
         this.class6 = class6;
-    }
-    
-    public String getSubjects()
-    {
-        return subjects;
-    }
-
-    public void setSubjects( String subjects )
-    {
-        this.subjects = subjects;
-    }
-    
-    public String getTutorSchedule()
-    {
-        return tutorschedule;
-    }
-
-    public void setTutorSchedule( String tutorschedule )
-    {
-        this.tutorschedule = tutorschedule;
     }
 }
