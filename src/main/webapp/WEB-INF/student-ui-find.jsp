@@ -53,11 +53,25 @@
                         <th>Tutor</th>
                         <th>Days Available</th>
                         <th>Action</th>
-                    </tr>    
-                </table> 
-                <form action='<c:url value="/student?action=find"/>' method='POST'> 
+                    </tr>
+                        <c:forEach items="${tutors}" var="tutor">
+                            <tr>
+                                <td>${tutor.getStringSubjects()}</td>
+                                <td>${tutor.getFullName()}</td>
+                                <td>
+                                    ${scheduler.find_avaiability(user, tutor)}
+                                </td>
+                                <td>
+                                    <form action='<c:url value="/confirm-day?tutor=${tutor.getId()}"/>' method="POST">
+                                        <input type='Submit' value="Schedule Now!">
+                                    </form>                            
+                                </td>
+                            </tr>
+                        </c:forEach>
+                </table>
+                    <form action='<c:url value="/student?action=find"/>' method='POST'> 
                         <input type="submit" value="Find tutors!">
-                </form>
+                    </form>
             </div>
         </div>
     </main>

@@ -14,7 +14,7 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 30em;
+    /* height: 30em; */
 }
 
 .student_information, form, .tutor_schedule_column, .student_schedule_column, .tutor_directory_table, .student_input_schedule {
