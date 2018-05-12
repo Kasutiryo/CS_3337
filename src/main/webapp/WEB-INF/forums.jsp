@@ -24,15 +24,15 @@
                 </tr>
 			  <c:forEach items="${question}" var="entry">
 				  <tr>
-				    <td>${entry.name}</td>
+				    <td >${entry.name}</td>
 				    <td>${entry.message}</td>
-				    <td><a>Answer Question</a></td>
+				    <td><button>Answer Question</button></td>
 				  </tr>
 				  <c:forEach items="${answer}" var="answer">
 					  <c:if test="${entry.id == answer.id}">
 					  <tr>
 					    <td></td>
-					    <td>${answer.message}</td>
+					    <td class="blue">${answer.message}</td>
 					    <td>${answer.name}</td>
 					  </tr>
 					  </c:if>

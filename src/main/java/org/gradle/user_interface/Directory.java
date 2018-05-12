@@ -56,6 +56,7 @@ public class Directory extends HttpServlet {
             String username = "cs3220stu28";
             String password = "3KKc!FRw";
             
+            //CS 3337 account didn't work, used CS 3220 one.
         	/*String url = "jdbc:mysql://cs3.calstatela.edu/cs3337stu07";
             String username = "cs3337stu07";
             String password = "WFcy!P#!";*/

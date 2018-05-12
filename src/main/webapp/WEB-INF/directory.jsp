@@ -22,7 +22,7 @@
                 </tr>
                 <c:forEach items="${tutor}" var="tutor">
 					<tr>
-						<td>${tutor.id}</td>
+						<td>${tutor.subjects}</td>
 						<td>${tutor.name}</td>
 						<td>${tutor.schedule}</td>
 						<td>${tutor.email}</td>
